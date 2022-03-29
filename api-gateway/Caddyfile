@@ -1,0 +1,13 @@
+{
+   admin :41000
+}
+
+
+:4000 {
+
+    reverse_proxy /api/v1/* localhost:4002
+    reverse_proxy /socket/* localhost:4002
+
+    reverse_proxy /* localhost:4001
+
+}
