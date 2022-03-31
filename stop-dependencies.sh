@@ -5,4 +5,4 @@ cd $MY_DIR
 
 ./mysql/delete.sh
 
-./api-gateway/delete.sh
+./api-gateway/stop.sh
