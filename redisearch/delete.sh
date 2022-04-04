@@ -3,10 +3,10 @@ MY_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/$(basename "${BASH_SOURCE
 MY_DIR="$(dirname $MY_PATH)"
 cd $MY_DIR
 
-docker network create kubevious
+docker-compose kill
+docker-compose rm -f -v
+docker-compose down -v
 
-./mysql/start.sh
+rm -rf runtime-data
 
-./redisearch/start.sh
-
-./api-gateway/run.sh
+rm ./runtime-configuration.sh

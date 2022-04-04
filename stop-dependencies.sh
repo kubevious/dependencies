@@ -5,4 +5,6 @@ cd $MY_DIR
 
 ./mysql/delete.sh
 
+./redisearch/delete.sh
+
 ./api-gateway/stop.sh

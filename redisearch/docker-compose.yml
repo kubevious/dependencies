@@ -1,0 +1,28 @@
+version: '3.3'
+services:
+
+  redisearch:
+    image: 'redislabs/redisearch:latest'
+    container_name: kubevious-redisearch
+    networks:
+      - kubevious
+    hostname: kubevious-redisearch
+    restart: always
+    ports:
+      - '4070:6379'
+
+  redisearch-commander:
+    container_name: kubevious-redisearch-commander
+    networks:
+      - kubevious
+    hostname: kubevious-redisearch-commander
+    image: rediscommander/redis-commander:latest
+    restart: always
+    environment:
+    - REDIS_HOSTS=local:kubevious-redisearch:6379
+    ports:
+    - "4060:8081"
+
+networks:
+  kubevious:
+    external: true
