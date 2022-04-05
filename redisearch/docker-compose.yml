@@ -1,7 +1,7 @@
 version: '3.3'
 services:
 
-  redisearch:
+  kubevious-redisearch:
     image: 'redislabs/redisearch:latest'
     container_name: kubevious-redisearch
     networks:
@@ -11,7 +11,7 @@ services:
     ports:
       - '4070:6379'
 
-  redisearch-commander:
+  kubevious-redisearch-commander:
     container_name: kubevious-redisearch-commander
     networks:
       - kubevious

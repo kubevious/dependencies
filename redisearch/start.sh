@@ -7,8 +7,8 @@ cd $MY_DIR
 
 docker-compose up -d --build
 
-echo "export REDISEARCH_HOST=localhost" > ./runtime-configuration.sh
-echo "export REDISEARCH_PORT=4070" >> ./runtime-configuration.sh
+echo "export REDIS_HOST=localhost" > ./runtime-configuration.sh
+echo "export REDIS_PORT=4070" >> ./runtime-configuration.sh
 
 echo "Redis Listening on: 4070"
 echo "Redis UI: http://localhost:4060"
