@@ -2,7 +2,7 @@ version: '3.3'
 services:
 
   kubevious-redisearch:
-    image: 'redislabs/redisearch:latest'
+    image: 'redislabs/redisearch:2.4.8'
     container_name: kubevious-redisearch
     networks:
       - kubevious
