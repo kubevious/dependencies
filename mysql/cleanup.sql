@@ -10,3 +10,8 @@ DELETE FROM rule_statuses;
 DELETE FROM rules;
 DELETE FROM marker_items;
 DELETE FROM markers;
+
+DELETE FROM guard_change_packages;
+DELETE FROM guard_validation_history;
+DELETE FROM guard_validation_queue;
+DELETE FROM guard_validation_states;
