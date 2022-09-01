@@ -3,9 +3,19 @@ MY_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/$(basename "${BASH_SOURCE
 MY_DIR="$(dirname $MY_PATH)"
 cd $MY_DIR
 
+source configuration.sh
+
 echo ""
 echo "*** "
-echo "*** Starting Kubernete Cluster"
+echo "*** Starting Kubernetes KIND Cluster"
 echo "*** "
 
-kind create cluster --name my-cluster
+kind create cluster --name ${K8S_CLUSTER_NAME} --kubeconfig ${K8S_CONFIG_PATH}
+
+
+echo ""
+echo "*** "
+echo "*** Setting up CRDs..."
+echo "*** "
+
+./exec-kubectl.sh apply -f ../../helm.git/kubernetes/templates/crds/

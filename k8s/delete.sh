@@ -3,4 +3,13 @@ MY_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/$(basename "${BASH_SOURCE
 MY_DIR="$(dirname $MY_PATH)"
 cd $MY_DIR
 
-kind delete cluster --name my-cluster
+source configuration.sh
+
+echo ""
+echo "*** "
+echo "*** Deleting Kubernetes KIND Cluster"
+echo "*** "
+
+kind delete cluster --name ${K8S_CLUSTER_NAME}
+
+rm ${K8S_CONFIG_PATH}

@@ -3,10 +3,6 @@ MY_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/$(basename "${BASH_SOURCE
 MY_DIR="$(dirname $MY_PATH)"
 cd $MY_DIR
 
-./mysql/delete.sh
+source configuration.sh
 
-./redisearch/delete.sh
-
-./k8s/delete.sh
-
-./api-gateway/stop.sh
+kubectl --kubeconfig ${K8S_CONFIG_PATH} $@

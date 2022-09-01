@@ -19,6 +19,13 @@ if [ $RESULT -ne 0 ]; then
   exit 1;
 fi
 
+./k8s/start.sh
+RESULT=$?
+if [ $RESULT -ne 0 ]; then
+  echo "ERROR. Could not start K8s Cluster."
+  exit 1;
+fi
+
 ./api-gateway/run.sh
 RESULT=$?
 if [ $RESULT -ne 0 ]; then
