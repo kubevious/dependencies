@@ -19,3 +19,12 @@ echo "*** Setting up CRDs..."
 echo "*** "
 
 ./exec-kubectl.sh apply -f ../../helm.git/kubernetes/templates/crds/
+
+
+echo ""
+echo "*** "
+echo "*** INSTALL APPS..."
+echo "*** "
+
+cd ${MY_DIR}/configs
+KUBECONFIG=${K8S_CONFIG_PATH} helmfile apply
