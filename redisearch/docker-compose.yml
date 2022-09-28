@@ -3,6 +3,7 @@ services:
 
   kubevious-redisearch:
     image: 'redislabs/redisearch:2.4.14'
+    # image: docker.io/kubevious/redisearch-ubi:v1.1
     container_name: kubevious-redisearch
     networks:
       - kubevious
