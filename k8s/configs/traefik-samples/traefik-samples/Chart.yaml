@@ -1,0 +1,6 @@
+apiVersion: v2
+name: traefik-samples
+description: A Helm chart for traefik-samples
+type: application
+version: 0.0.1
+appVersion: 0.0.1

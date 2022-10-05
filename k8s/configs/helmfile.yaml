@@ -1,24 +1,29 @@
 repositories:
-- name: prometheus-community
-  url: https://prometheus-community.github.io/helm-charts
-- name: jemstack
-  url: https://charts.jetstack.io
+  - name: prometheus-community
+    url: https://prometheus-community.github.io/helm-charts
+  - name: jemstack
+    url: https://charts.jetstack.io
 
+helmfiles:
+  - path: "./*/helmfile.yaml"
 
 releases:
-- name: prom-norbac-ubuntu
-  namespace: prometheus
-  chart: prometheus-community/prometheus
-  set:
-  - name: rbac.create
-    value: false
-- name: cert-manager
-  namespace: cert-manager
-  chart: jetstack/cert-manager
-  version: v1.9.1
-  set: 
-  - name: installCRDs
-    value: true
-- name: sample-certs
-  namespace: sample
-  chart: ./sample-certs
+  - name: prom-norbac-ubuntu
+    namespace: prometheus
+    chart: prometheus-community/prometheus
+    set:
+      - name: rbac.create
+        value: false
+
+  - name: cert-manager
+    namespace: cert-manager
+    chart: jetstack/cert-manager
+    version: v1.9.1
+    values:
+      - installCRDs: true
+
+  - name: sample-certs
+    namespace: sample
+    chart: ./sample-certs
+    needs:
+      - cert-manager/cert-manager

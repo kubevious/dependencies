@@ -1,0 +1,17 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: whoami-crd
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: Host(`demo-traefik.kubevious.io`)
+      services:
+        - kind: Service
+          name: whoami-svc
+          port: 80
+      middlewares:
+        - name: traefik-samples-redirectscheme@kubernetescrd
+          namespace: {{ .Release.Namespace }}

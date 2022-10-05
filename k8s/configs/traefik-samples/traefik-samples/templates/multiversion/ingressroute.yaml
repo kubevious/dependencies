@@ -1,0 +1,80 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: whoamiv1
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`demo-traefik.kubevious.io`) && PathPrefix(`/multiversion/v1`)
+      services:
+        - kind: Service
+          name: whoamiv1
+          port: 80
+      middlewares:
+        - name: traefik-samples-multiversion-prefix@kubernetescrd
+          namespace: {{ .Release.Namespace }}
+  tls:
+    certResolver: le
+    domains:
+      - main: demo-traefik.kubevious.io
+        sans:
+          - demo-traefik.kubevious.io
+    options:
+      name: tlsoptions
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: whoamiv2
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`demo-traefik.kubevious.io`) && PathPrefix(`/multiversion/v2`)
+      services:
+        - kind: Service
+          name: whoamiv2
+          port: 80
+      middlewares:
+        - name: traefik-samples-multiversion-prefix@kubernetescrd
+          namespace: {{ .Release.Namespace }}
+  tls:
+    certResolver: le
+    domains:
+      - main: demo-traefik.kubevious.io
+        sans:
+          - demo-traefik.kubevious.io
+    options:
+      name: tlsoptions
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: whoami-multiversion
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`demo-traefik.kubevious.io`) && PathPrefix(`/multiversion`)
+      services:
+        - kind: TraefikService
+          name: weighted-whoami
+          port: 80
+      middlewares:
+        - name: traefik-samples-multiversion-prefix@kubernetescrd
+          namespace: {{ .Release.Namespace }}
+  tls:
+    certResolver: le
+    domains:
+      - main: demo-traefik.kubevious.io
+        sans:
+          - demo-traefik.kubevious.io
+    options:
+      name: tlsoptions

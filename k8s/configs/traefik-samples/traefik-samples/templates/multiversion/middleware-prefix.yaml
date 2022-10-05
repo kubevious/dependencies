@@ -1,0 +1,10 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: multiversion-prefix
+spec:
+  stripPrefix:
+    prefixes:
+      - /multiversion/v1
+      - /multiversion/v2
+      - /multiversion

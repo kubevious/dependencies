@@ -15,16 +15,7 @@ kind create cluster --name ${K8S_CLUSTER_NAME} --kubeconfig ${K8S_CONFIG_PATH}
 
 echo ""
 echo "*** "
-echo "*** Setting up CRDs..."
+echo "*** "
 echo "*** "
 
-./exec-kubectl.sh apply -f ../../helm.git/kubernetes/templates/crds/
-
-
-echo ""
-echo "*** "
-echo "*** INSTALL APPS..."
-echo "*** "
-
-cd ${MY_DIR}/configs
-KUBECONFIG=${K8S_CONFIG_PATH} helmfile apply
+${MY_DIR}/install-sample-apps.sh

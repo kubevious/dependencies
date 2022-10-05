@@ -1,0 +1,9 @@
+# https://github.com/dockersamples/example-voting-app
+
+releases:
+
+  ##
+  ## VOTER-APP
+  - name: voter
+    namespace: voter
+    chart: ./voter-chart
