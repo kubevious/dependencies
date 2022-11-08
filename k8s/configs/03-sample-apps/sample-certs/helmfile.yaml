@@ -1,0 +1,7 @@
+releases:
+
+  - name: sample-certs
+    namespace: sample
+    chart: ./sample-certs
+    # needs:
+    #   - cert-manager/cert-manager

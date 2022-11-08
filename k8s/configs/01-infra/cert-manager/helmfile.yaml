@@ -1,0 +1,14 @@
+repositories:
+  - name: jetstack
+    url: https://charts.jetstack.io
+
+helmfiles:
+  - path: "./*/helmfile.yaml"
+
+releases:
+  - name: cert-manager
+    namespace: cert-manager
+    chart: jetstack/cert-manager
+    version: v1.9.1
+    values:
+      - installCRDs: true

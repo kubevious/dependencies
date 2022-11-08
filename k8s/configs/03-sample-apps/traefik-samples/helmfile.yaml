@@ -1,0 +1,10 @@
+
+releases:
+
+  ##
+  ## Traefik-Sample
+  - name: traefik-samples
+    namespace: traefik-samples
+    chart: ./traefik-samples
+    # needs:
+    #   - traefik/traefik

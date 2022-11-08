@@ -10,11 +10,3 @@ releases:
     namespace: traefik
     chart: traefik/traefik
     version: 10.19.5
-
-  ##
-  ## Traefik-Sample
-  - name: traefik-samples
-    namespace: traefik-samples
-    chart: ./traefik-samples
-    needs:
-      - traefik/traefik

@@ -12,4 +12,4 @@ echo "*** "
 
 cd ${MY_DIR}/configs
 export KUBECONFIG=${K8S_CONFIG_PATH}
-helmfile apply
+helmfile apply --skip-diff-on-install --concurrency 1
