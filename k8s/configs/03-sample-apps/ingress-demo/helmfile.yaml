@@ -1,0 +1,9 @@
+
+
+releases:
+
+  ##
+  ## Ingress Demo Chart
+  - name: ingress-demo
+    namespace: ingress-demo
+    chart: ./chart
