@@ -4,3 +4,5 @@ MY_DIR="$(dirname $MY_PATH)"
 
 export K8S_CLUSTER_NAME=kubevious-oss-dev
 export K8S_CONFIG_PATH=${MY_DIR}/runtime/kube-config.yaml
+
+export CA_CERTS_FOLDER=${MY_DIR}/runtime/certs

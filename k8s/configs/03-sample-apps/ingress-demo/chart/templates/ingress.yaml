@@ -8,10 +8,12 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - example.kubevious-dev.io
-    secretName: hello-app-tls
+    - example1.kubevious-dev.io
+    secretName: hello-app-tls-1
+  - hosts: 
+    secretName: hello-app-tls-2
   rules:
-  - host: example.kubevious-dev.io
+  - host: "*.kubevious-dev.io"
     http:
       paths:
         - pathType: Prefix
@@ -21,3 +23,13 @@ spec:
               name: hello-service
               port:
                 number: 80
+  - host: "example1.kubevious-dev.io"
+    http:
+      paths:
+        - pathType: Prefix
+          path: "/"
+          backend:
+            service:
+              name: hello-service
+              port:
+                number: 80                

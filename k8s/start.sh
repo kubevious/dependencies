@@ -7,6 +7,13 @@ source configuration.sh
 
 echo ""
 echo "*** "
+echo "*** GENERATE CA ROOTS"
+echo "*** "
+
+${MY_DIR}/configs/01-infra/cert-manager/local-root-ca/generate.sh
+
+echo ""
+echo "*** "
 echo "*** Starting Kubernetes KIND Cluster"
 echo "*** "
 
@@ -21,10 +28,10 @@ echo "*** "
 
 echo ""
 echo "*** "
-echo "*** SETUP CA"
+echo "*** SETUP CA ROOT SECRET"
 echo "*** "
 
-${MY_DIR}/setup-ca.sh
+${MY_DIR}/configs/01-infra/cert-manager/local-root-ca/create-secrets.sh
 
 echo ""
 echo "*** "
