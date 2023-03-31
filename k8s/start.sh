@@ -13,11 +13,7 @@ echo "*** "
 ${MY_DIR}/configs/01-infra/cert-manager/local-root-ca/generate.sh
 
 echo ""
-echo "*** "
-echo "*** Starting Kubernetes KIND Cluster"
-echo "*** "
-
-kind create cluster --name ${K8S_CLUSTER_NAME} --kubeconfig ${K8S_CONFIG_PATH} --config ${MY_DIR}/config.yaml
+${MY_DIR}/bring-up-cluster.sh
 
 echo ""
 echo "*** "
@@ -30,7 +26,6 @@ echo ""
 echo "*** "
 echo "*** SETUP CA ROOT SECRET"
 echo "*** "
-
 ${MY_DIR}/configs/01-infra/cert-manager/local-root-ca/create-secrets.sh
 
 echo ""
